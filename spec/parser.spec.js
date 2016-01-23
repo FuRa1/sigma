@@ -1,42 +1,35 @@
-require('angular-mocks.js');
-
 describe('parserTest', function () {
-    var module = angular.module('testApp', []);
-    var factory;
+    var parser;
 
     beforeEach(function(){
         module('testApp');
     });
 
     beforeEach(inject(function ($injector) {
-        factory = $injector.get('parser');
+        parser = $injector.get('parser');
     }));
 
     it('should always return an array', function () {
+        var result = parser();
 
-
-        expect(scope.palindromes.length).toBe(3);
+        expect(result).toBeArray();
     });
 
     it('is there are no palindromes should return an empty array', function () {
-        var scope = {},
-            ctrl = new PhoneListCtrl(scope);
+        var result = parser();
 
-        expect(scope.palindromes.length).toBe(3);
     });
 
-    it('"aaasssaaa" should contain 3 palindromes', function () {
-        var scope = {},
-            ctrl = new PhoneListCtrl(scope);
+    it('"aaasssaaa" should contain 5 palindromes', function () {
+        var result = parser('aaasssaaa');
 
-        expect(scope.palindromes.length).toBe(3);
+        expect(result).toContain('aaasssaaa');
     });
 
     it('firs element should have maximal length', function () {
-        var scope = {},
-            ctrl = new PhoneListCtrl(scope);
+        var result = parser('aaasssaaa');
 
-        expect(scope.palindromes.length).toBe(3);
+        expect(result[0] > result[1]).toBe(true);
     });
 
 });
