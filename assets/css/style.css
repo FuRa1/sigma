@@ -1,0 +1,6 @@
+ol :first-child{
+    font-weight: bold;
+}
+.container {
+    padding: 10%;
+}
