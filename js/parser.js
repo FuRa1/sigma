@@ -6,11 +6,11 @@
 
     function parser() {                                                                 //main function
         var palindromes = [];                                                           //create empty palindrome array
-        var mixPalindromeLength = 3;                                                    //set min palindrome length
+        var maxPalindromeLength = 3;                                                    //set min palindrome length
 
         function parse(string) {                                                        //got string value for check
-            if (string.length > mixPalindromeLength - 1) {                              //check length to be more than min
-                for (var i = string.length - 1; i >= mixPalindromeLength - 1; i--) {    //star loop to compare first letter
+            if (string.length > maxPalindromeLength - 1) {                              //check length to be more than min
+                for (var i = string.length - 1; i >= maxPalindromeLength - 1; i--) {    //star loop to compare first letter
                     if (string[0] === string[i]) {                                      //with lasts to reach min length
                         var newString = string.slice(0, i + 1);                         //create new string with last letter matched
                         var newStringReverse = newString.split('').reverse().join('');  //create reversed new sting

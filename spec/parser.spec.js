@@ -1,7 +1,7 @@
 describe('parserTest', function () {
     var parser;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('testApp');
     });
 
@@ -9,27 +9,29 @@ describe('parserTest', function () {
         parser = $injector.get('parser');
     }));
 
-    it('should always return an array', function () {
-        var result = parser();
+    it('is there are no palindromes, should return an empty array', function () {
+        var result = parser("123");
 
-        expect(result).toBeArray();
-    });
-
-    it('is there are no palindromes should return an empty array', function () {
-        var result = parser();
+        expect(result).toBeEmptyArray();
 
     });
 
-    it('"aaasssaaa" should contain 5 palindromes', function () {
-        var result = parser('aaasssaaa');
+    it('with "yabxyzyxba1" value, result should return an array, firs elm of it will be "abxyzyxba"', function () {
+        var result = parser('yabxyzyxba1');
 
-        expect(result).toContain('aaasssaaa');
+        expect(result[0]).toBe("abxyzyxba");
+    });
+
+    it('with "yabxyzyxba1" value, result should contain 4 palindromes', function () {
+        var result = parser('yabxyzyxba1');
+
+        expect(result.length).toBe(4);
     });
 
     it('firs element should have maximal length', function () {
-        var result = parser('aaasssaaa');
+        var result = parser('yabxyzyxba1');
 
-        expect(result[0] > result[1]).toBe(true);
+        expect(result[0].length > result[1].length).toBe(true);
     });
 
 });
